@@ -1,14 +1,14 @@
 version: '3'
 services:
-  postgres:
-    container_name: postgres
+  db:
+    container_name: db
     image: postgres
     environment:
         POSTGRES_DB: "Travel"
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: password
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - rails-pg-data:/var/lib/postgresql/data
     ports:
       - '5432:5432'
     networks:
@@ -25,10 +25,10 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - postgres
+      - db
 
 volumes:
-  pg-data:
+  rails-pg-data:
   rails-data:
 
 networks:
