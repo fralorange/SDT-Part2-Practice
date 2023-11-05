@@ -1,24 +1,39 @@
-# README
+# SDT-Part2-Practice
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Описание проекта
 
-Things you may want to cover:
+SDT-Part2-Practice - это проект на Ruby on Rails, использующий PostgreSQL в качестве базы данных. SDT означает "Software Development Technologies" (Технологии разработки программного обеспечения).
 
-* Ruby version
+## Установка
 
-* System dependencies
+Для установки проекта выполните следующие шаги:
 
-* Configuration
+1. Клонируйте репозиторий с GitHub:
+    ```bash
+    git clone https://github.com/fralorange/SDT-Part2-Practice
+    ```
+2. Перейдите в каталог проекта:
+    ```bash
+    cd SDT-Part2-Practice
+    ```
+3. Установите все зависимости:
+    ```bash
+    bundle install
+    ```
+4. Создайте базу данных и выполните миграции:
+    ```bash
+    rails db:create
+    rails db:migrate
+    ```
+5. Запустите сервер:
+    ```bash
+    rails server
+    ```
 
-* Database creation
+## Использование
 
-* Database initialization
+После установки вы можете открыть веб-браузер и перейти по адресу `http://localhost:3000` для доступа к приложению.
 
-* How to run the test suite
+## Лицензия
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Этот проект доступен под лицензией MIT. Подробности можно найти в файле LICENSE.
