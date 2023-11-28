@@ -5,12 +5,17 @@
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+    <%= f.text_field :first_name, autocomplete: "first_name" %>
   </div>
 
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    <%= f.text_field :last_name, autocomplete: "last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.collection_select :role_ids, Role.where(name: ['passenger', 'carrier']), :id, :name %>
   </div>
 
   <div class="field">

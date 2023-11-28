@@ -26,8 +26,14 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# Use devise for Auth.
+# Use devise for Authentication.
 gem "devise"
+
+# Use rolify for Roles.
+gem 'rolify'
+
+# Use cancancan for Authorization.
+gem 'cancancan'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
