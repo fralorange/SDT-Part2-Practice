@@ -23,5 +23,7 @@
   <%= @ticket.price %>
 </p>
 
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<% if current_user.has_role? :carrier %>
+  <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<% end %>
 <%= link_to 'Back', root_path %>
