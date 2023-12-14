@@ -49,11 +49,44 @@
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
+
+  <div>
+    <h2>
+      <% if current_user.has_role? :passenger %>
+        Booked Tickets
+      <% else %>
+        Posted Tickets
+      <% end %>
+    </h2>
+
+    <table>
+      <tr>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Price</th>
+        <th colspan="2"></th>
+      </tr>
+      <% current_user.tickets.each do |ticket| %>
+        <tr>
+          <td><%= ticket.departure_date %></td>
+          <td><%= ticket.arrival_date %></td>
+          <td><%= ticket.origin %></td>
+          <td><%= ticket.destination %></td>
+          <td><%= ticket.price %></td>
+          <td><%= link_to 'Show', ticket %></td>
+          <% if current_user.has_role? :passenger %>
+            <td><%= link_to 'Unbook', unbook_ticket_path(ticket), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 <% end %>
 
 <h3>Cancel my account</h3>
-
 <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
 <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-<%= link_to "Back", :back %>
+<%= link_to "Back", :root %>
