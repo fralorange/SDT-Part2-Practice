@@ -15,7 +15,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
-    @ticket.user = current_user
+    @ticket.users << current_user
     if @ticket.save
       redirect_to @ticket
     else
@@ -34,6 +34,26 @@ class TicketsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def book
+    @ticket = Ticket.find(params[:id])
+    if current_user.tickets << @ticket
+      flash[:notice] = 'Билет успешно забронирован'
+    else
+      flash[:alert] = 'Не удалось забронировать билет'
+    end
+    redirect_to edit_user_registration_path
+  end
+    
+  def unbook
+      @ticket = Ticket.find(params[:id])
+      if current_user.tickets.delete(@ticket)
+        flash[:notice] = 'Бронирование билета успешно отменено'
+      else
+        flash[:alert] = 'Не удалось отменить бронирование билета'
+      end
+      redirect_to edit_user_registration_path
   end
 
   def destroy
